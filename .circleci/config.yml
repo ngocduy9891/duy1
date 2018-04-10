@@ -1,6 +1,9 @@
 version: 2
 jobs:
   build:
+  branches:
+      only:
+        - prd
     docker:
       - image: docker:17.05.0-ce-git 
     steps:
