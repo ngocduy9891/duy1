@@ -1,5 +1,6 @@
 workflows:
   version: 2
+  prod:
     jobs:
       filters:
         branches:
@@ -42,6 +43,6 @@ workflows:
               command: |
                 login="$(aws ecr get-login --region ap-southeast-1)"
                 ${login}
-                docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest1           
-                docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest1
+                docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest          
+                docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest
                 docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker /bin/bash
