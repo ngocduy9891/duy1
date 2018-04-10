@@ -32,6 +32,7 @@ jobs:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
             - /caches/app.tar
+workflows:
       - deploy:
           branches:
              only:
