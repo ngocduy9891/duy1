@@ -1,6 +1,9 @@
 workflows:
   version: 2
   jobs:
+    branches:
+      only:
+        - prd
     build:
       docker:
         - image: docker:17.05.0-ce-git 
@@ -34,9 +37,6 @@ workflows:
             paths:
               - /caches/app.tar
         - deploy:
-            branches:
-               only:
-                 - prd
             name: Push application Docker image
             command: |
               login="$(aws ecr get-login --region ap-southeast-1)"
