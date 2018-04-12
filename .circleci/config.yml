@@ -2,7 +2,7 @@ version: 2.0
 jobs:
   "mysql5.5":
     docker:
-      - image: mysql/mysql-server:5.5
+      - image: circleci/mysql:5.5
     steps:
       - checkout
       - run:
@@ -17,7 +17,7 @@ jobs:
 
   "mysql5.6":
     docker:
-      - image: mysql/mysql-server:5.6
+      - image: circleci/mysql:5.6.38
     steps:
       - checkout
       - run:
@@ -32,7 +32,7 @@ jobs:
 
   "mysql5.7":
     docker:
-      - image: mysql/mysql-server:5.7
+      - image: circleci/mysql:5.7.16
     steps:
       - checkout
       - run:
