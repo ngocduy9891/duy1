@@ -37,9 +37,9 @@ jobs:
           command: |
             login="$(aws ecr get-login --region ap-southeast-1)"
             ${login}
-            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest1          
-            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest1
-            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest1 /bin/bash
+            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest4          
+            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest4
+            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest4 /bin/bash
 
   "mysql5.6":
     docker:
@@ -78,9 +78,9 @@ jobs:
           command: |
             login="$(aws ecr get-login --region ap-southeast-1)"
             ${login}
-            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest2          
-            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest2
-            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest2 /bin/bash
+            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest5          
+            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest5
+            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest5 /bin/bash
 
   "mysql5.7":
     docker:
@@ -119,14 +119,12 @@ jobs:
           command: |
             login="$(aws ecr get-login --region ap-southeast-1)"
             ${login}
-            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest3          
-            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest3
-            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest3 /bin/bash
+            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest6          
+            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest6
+            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest6 /bin/bash
 
 workflows:
   version: 2
   build:
     jobs:
       - "mysql5.5"
-      - "mysql5.6"
-      - "mysql5.7"
