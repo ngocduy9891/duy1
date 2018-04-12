@@ -1,11 +1,5 @@
-workflows:
-  version: 2
-  prod:
+ version: 2
     jobs:
-      filters:
-        branches:
-          only:
-            - prd
       build:
         docker:
           - image: docker:17.05.0-ce-git 
