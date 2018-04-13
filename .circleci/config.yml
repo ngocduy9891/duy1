@@ -37,9 +37,9 @@ jobs:
           command: |
             login="$(aws ecr get-login --region ap-southeast-1)"
             ${login}
-            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest4          
-            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest4
-            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest4 /bin/bash
+            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod          
+            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod
+            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod /bin/bash
 
   mysql5.6:
     docker:
@@ -78,9 +78,9 @@ jobs:
           command: |
             login="$(aws ecr get-login --region ap-southeast-1)"
             ${login}
-            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest5          
-            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest5
-            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest5 /bin/bash
+            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:stg          
+            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:stg
+            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:stg /bin/bash
 
   mysql5.7:
     docker:
@@ -119,9 +119,9 @@ jobs:
           command: |
             login="$(aws ecr get-login --region ap-southeast-1)"
             ${login}
-            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest6          
-            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest6
-            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:latest6 /bin/bash
+            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev          
+            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev
+            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev /bin/bash
 
 workflows:
   version: 2
