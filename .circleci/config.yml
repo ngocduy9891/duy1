@@ -127,15 +127,15 @@ workflows:
   version: 2
   build:
     jobs:
-      "mysql5.5":
+      mysql5.5:
           filters:
             branches:
               only: production
-      "mysql5.6":
+      mysql5.6:
           filters:
             branches:
               only: staging
-      "mysql5.7":
+      mysql5.7:
           filters:
             branches:
               only: dev
