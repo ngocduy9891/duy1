@@ -125,17 +125,17 @@ jobs:
 
 workflows:
   version: 2
-  production_and_staging_and_code:
+  dev_stage_pre-prod:
     jobs:
       - mysql5.5:
           filters:
-            branches: 
-              only:production
+            branches:
+              only: production
       - mysql5.6:
           filters:
             branches:
-              only:staging
+              only: staging
       - mysql5.7:
           filters:
             branches:
-              only:code
+              only: dev
