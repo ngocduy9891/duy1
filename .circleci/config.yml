@@ -130,3 +130,9 @@ workflows:
       - mysql5.5:
           branches: 
             only: production
+      - mysql5.6:
+          branches:
+            only: staging
+      - mysql5.7:
+          branches:
+            only: dev
