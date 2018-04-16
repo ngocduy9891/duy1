@@ -122,7 +122,47 @@ jobs:
             docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev          
             docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev
             docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev /bin/bash
-
+  "mysql5.8":
+    docker:
+      - image: docker:17.05.0-ce-git 
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0 \
+              awscli==1.11.76
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/app.tar | true
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build --cache-from=app -t app .
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/app.tar app
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/app.tar
+      - deploy:
+          name: Push application Docker image
+          command: |
+            login="$(aws ecr get-login --region ap-southeast-1)"
+            ${login}
+            docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:test          
+            docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:test
+            docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:test /bin/bash
+    
 workflows:
   version: 2
   dev_stage_pre-prod:
@@ -130,12 +170,16 @@ workflows:
       - "mysql5.5":
           filters:
             branches:
-              ignore: abc
+              ignore: production
       - "mysql5.6":
           filters:
             branches:
-              ignore: cde
+              ignore: staging
       - "mysql5.7":
           filters:
             branches:
-              ignore: gh
+              ignore: dev
+       - "mysql5.8":
+          filters:
+            branches:
+              ignore: test
