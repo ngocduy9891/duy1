@@ -129,10 +129,13 @@ workflows:
     jobs:
       - mysql5.5:
           branches: 
-            only: production
+            only:
+              - production
       - mysql5.6:
           branches:
-            only: staging
+            only:
+              - staging
       - mysql5.7:
           branches:
-            only: dev
+            only:
+              - dev
