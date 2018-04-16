@@ -128,3 +128,6 @@ workflows:
   build:
     jobs:
       - mysql5.5
+          filters:
+            branches: 
+              only: production
