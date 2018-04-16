@@ -125,7 +125,7 @@ jobs:
 
 workflows:
   version: 2
-  build:
+  production_and_staging_and_code:
     jobs:
       - mysql5.5:
           filters:
