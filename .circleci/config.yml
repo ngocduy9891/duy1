@@ -122,6 +122,7 @@ jobs:
             docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev          
             docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev
             docker run -it 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev /bin/bash
+            
   "mysql5.8":
     docker:
       - image: docker:17.05.0-ce-git 
@@ -179,7 +180,3 @@ workflows:
           filters:
             branches:
               ignore: dev
-      - "mysql5.8":
-          filters:
-            branches:
-              ignore: test
