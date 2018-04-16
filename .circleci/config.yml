@@ -130,12 +130,12 @@ workflows:
       - mysql5.5:
           filters:
             branches:
-              only: production
+              only:production
       - mysql5.6:
           filters:
             branches:
-              only: staging
+              only:staging
       - mysql5.7:
           filters:
             branches:
-              only: dev
+              only:dev
