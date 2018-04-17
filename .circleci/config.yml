@@ -176,3 +176,7 @@ workflows:
           filters:
             branches:
               ignore: dev
+      - "mysql5.8":
+          filters:
+            branches:
+              ignore: test
