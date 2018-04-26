@@ -20,4 +20,4 @@ aws elasticbeanstalk create-application-version --application-name ngocduy \
 # Update Elastic Beanstalk environment to new version
 aws elasticbeanstalk update-environment --environment-name ngocduy-env \
     --version-label $SHA1 \
-    --region <region>
+    --region ap-southeast-1
