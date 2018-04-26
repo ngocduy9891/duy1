@@ -159,7 +159,7 @@ jobs:
     
 workflows:
   version: 2
-  prod_stage_dev_test:
+  prod:
     jobs:
       - "mysql5.5":
           filters:
