@@ -35,7 +35,8 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
-            sh ./deploy.sh
+              docker build --rm=false -t 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:$CIRCLE_SHA1 -f Dockerfile .
+              sh ./deploy.sh
 
   "ubuntu2":
     docker:
