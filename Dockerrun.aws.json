@@ -1,15 +1,12 @@
 {
-    "AWSEBDockerrunVersion": 2,
-    "containerDefinitions": [{
-        "name": "production",
-        "image": "012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod",
-        "environment": [],
-        "essential": true,
-        "memory": 512,
-        "portMappings": [{
-            "hostPort": 3000,
-            "containerPort": 3000
-        }],
-        "mountPoints": []
-    }]
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "5000"
+    }
+  ]
 }
