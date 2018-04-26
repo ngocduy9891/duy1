@@ -35,7 +35,7 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
-            ./deploy.sh $CIRCLE_SHA1
+            sh ./deploy.sh $CIRCLE_SHA1
 
   "mysql5.6":
     docker:
