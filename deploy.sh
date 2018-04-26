@@ -13,11 +13,11 @@ docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:$SHA1
 EB_BUCKET=<project>-deploy-bucket
 DOCKERRUN_FILE=$SHA1-Dockerrun.aws.json
 sed "s/<TAG>/$SHA1/" < Dockerrun.aws.json > $DOCKERRUN_FILE
-aws elasticbeanstalk create-application-version --application-name <project> \
-    --version-label $SHA1 --source-bundle S3Bucket=$EB_BUCKET,S3Key=$DOCKERRUN_FILE \
-    --region <region>
+aws elasticbeanstalk create-application-version --application-name ngocduy \
+    --version-label $SHA1 \
+    --region ap-southeast-1
 
 # Update Elastic Beanstalk environment to new version
-aws elasticbeanstalk update-environment --environment-name <project>-env \
+aws elasticbeanstalk update-environment --environment-name ngocduy-env \
     --version-label $SHA1 \
     --region <region>
