@@ -39,6 +39,7 @@ jobs:
             ${login}
             docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod          
             docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod
+            ./deploy.sh 
 
   "mysql5.6":
     docker:
@@ -168,15 +169,3 @@ workflows:
           filters:
             branches:
               ignore: production
-      - "mysql5.6":
-          filters:
-            branches:
-              ignore: staging
-      - "mysql5.7":
-          filters:
-            branches:
-              ignore: dev
-      - "mysql5.8":
-          filters:
-            branches:
-              ignore: test
