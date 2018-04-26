@@ -1,6 +1,6 @@
 version: 2.0
 jobs:
-  "mysql5.5":
+  "ubuntu1":
     docker:
       - image: docker:17.05.0-ce-git 
     steps:
@@ -35,9 +35,9 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
-            sh ./deploy.sh $CIRCLE_SHA1
+            sh ./deploy.sh
 
-  "mysql5.6":
+  "ubuntu2":
     docker:
       - image: docker:17.05.0-ce-git 
     steps:
@@ -77,7 +77,7 @@ jobs:
             docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:stg          
             docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:stg
 
-  "mysql5.7":
+  "ubuntu3":
     docker:
             - image: docker:17.05.0-ce-git 
     steps:
@@ -117,7 +117,7 @@ jobs:
             docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev          
             docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:dev
             
-  "mysql5.8":
+  "ubuntu4":
     docker:
       - image: docker:17.05.0-ce-git 
     steps:
@@ -161,7 +161,7 @@ workflows:
   version: 2
   prod:
     jobs:
-      - "mysql5.5":
+      - "ubuntu1":
           filters:
             branches:
               ignore: production
