@@ -13,7 +13,7 @@ docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:$SHA1
 EB_BUCKET=ngocduy-deploy-bucket
 DOCKERRUN_FILE=$SHA1-Dockerrun.aws.json
 sed "s/<TAG>/$SHA1/" < Dockerrun.aws.json > $DOCKERRUN_FILE
-aws elasticbeanstalk create-application-version --application-name ngocduy \
+aws elasticbeanstalk create-application-version --application-name CiEb-env \
     --version-label $SHA1 \
     --region ap-southeast-1
 
