@@ -11,6 +11,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get -y autoclean
     
-EXPOSE 5000
+EXPOSE 80
 
 CMD ["bash"]
