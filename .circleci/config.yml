@@ -2,11 +2,30 @@ version: 2.0
 jobs:
   "python1":
     docker:
-      - image: circleci/python:2-jessie
+      - image: circleci/python:3.6.1
+        environment: # environment variables for database
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
     steps:
-      - checkout
-      - run:          
-          echo "hello world"
+      - checkout # special step to check out source code to the working directory
+      - restore_cache: # restores saved dependency cache if the Branch key template or requirements.txt files have not changed since the previous run
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run: # install and activate virtual environment with pip
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - save_cache: # special step to save dependency cache
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run: # run tests
+          command: |
+            . venv/bin/activate
+            python manage.py test
+      - store_artifacts: # special step to store test reports as artifacts
+          path: test-reports/
+          destination: tr1
       - deploy:
           name: Push application Docker image
           command: |
@@ -15,10 +34,29 @@ jobs:
   "python2":
     docker:
       - image: circleci/python:2-jessie
+        environment: # environment variables for database
+          POSTGRES_USER: root
+          POSTGRES_DB: circle_test
     steps:
-      - checkout
-      - run:        
-          echo "hello world"
+      - checkout # special step to check out source code to the working directory
+      - restore_cache: # restores saved dependency cache if the Branch key template or requirements.txt files have not changed since the previous run
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run: # install and activate virtual environment with pip
+          command: |
+            python3 -m venv venv
+            . venv/bin/activate
+            pip install -r requirements.txt
+      - save_cache: # special step to save dependency cache
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run: # run tests
+          command: |
+            . venv/bin/activate
+            python manage.py test
+      - store_artifacts: # special step to store test reports as artifacts
+          path: test-reports/
+          destination: tr1
       - deploy:
           name: Push application Docker image
           command: |
