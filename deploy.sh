@@ -1,7 +1,7 @@
 # deploy.sh
 #! /bin/bash
 
-SHA1=prod
+SHA1=$1
 
 # Push image to ECR
 login="$(aws ecr get-login --region ap-southeast-1)"
