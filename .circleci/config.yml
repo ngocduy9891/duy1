@@ -6,7 +6,7 @@ jobs:
     steps:
       - run:
           checkout
-          run: echo "hello world"
+          echo "hello world"
       - deploy:
           name: Push application Docker image
           command: |
@@ -18,7 +18,7 @@ jobs:
     steps:
       - run:
           checkout
-          run: echo "hello world"
+          echo "hello world"
       - deploy:
           name: Push application Docker image
           command: |
