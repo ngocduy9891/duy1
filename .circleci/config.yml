@@ -35,7 +35,7 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
-              sh ./deploy.sh $CIRCLE_SHA1
+              sh ./deploy.sh prod
 
   "ubuntu2":
     docker:
