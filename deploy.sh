@@ -7,7 +7,7 @@ SHA1=$1
 login="$(aws ecr get-login --region ap-southeast-1)"
 ${login}
 docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:$SHA1
-docker build -t 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:$SHA1 .
+docker build --rm=false -t 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:$SHA1 -f Dockerfile .
 docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:$SHA1
 
 # Create new Elastic Beanstalk version
