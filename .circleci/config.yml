@@ -159,7 +159,7 @@ jobs:
     
 workflows:
   version: 2
-  prod_stag:
+  prod_staging:
     jobs:
       - "ubuntu1":
           filters:
