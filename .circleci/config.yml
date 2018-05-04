@@ -126,7 +126,7 @@ jobs:
     
 workflows:
   version: 2
-  prod_staging:
+  prod_stagig:
     jobs:
       - "python1":
           filters:
