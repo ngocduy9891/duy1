@@ -4,7 +4,8 @@
 SHA1=$1
 
 # Push image to ECR
-$(aws ecr get-login --region ap-southeast-1)
+login="$(aws ecr get-login --region ap-southeast-1)"
+${login}
 docker tag app 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod         
 docker push 012881927014.dkr.ecr.ap-southeast-1.amazonaws.com/docker:prod
 
