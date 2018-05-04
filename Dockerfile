@@ -1,14 +1,16 @@
-#!/bin/bash
+FROM ubuntu:xenial
 
-NAME=Python
-BASE_REPO=python
-VARIANTS=(browsers node node-browsers)
+###
+# Install dependencies
+#
 
-IMAGE_CUSTOMIZATIONS=$(cat <<'EOF'
-# Install pipenv
-RUN sudo pip install pipenv
-EOF
-)
-
-source ../shared/images/generate-node.sh
-source ../shared/images/generate.sh
+RUN apt-get update && \
+    apt-get install -qq -y --no-install-recommends \
+      apt-transport-https \
+      build-essential \
+      ca-certificates \
+      curl \
+      git-core \
+      python-software-properties && \
+    rm -rf /var/lib/apt/lists/* && \
+    apt-get -y autoclean
