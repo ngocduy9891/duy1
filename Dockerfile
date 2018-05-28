@@ -14,3 +14,5 @@ RUN apt-get update && \
       python-software-properties && \
     rm -rf /var/lib/apt/lists/* && \
     apt-get -y autoclean
+    
+EXPOSE 3000
